@@ -1,0 +1,42 @@
+name: ci
+
+on: [ push, pull_request, workflow_dispatch ]
+
+jobs:
+  lint:
+    name: linting
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: checkout project
+        uses: actions/checkout@v4.2.1
+
+      - name: Install aftman
+        uses: ok-nick/setup-aftman@v0.4.2
+        with:
+            token: ${{ SECRETS.GITHUB_TOKEN }} 
+               
+      - name: check linting
+        run: |
+          selene src
+  style:
+    name: styling
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: checkout project
+        uses: actions/checkout@v4.2.1
+
+      - name: Install aftman
+        uses: ok-nick/setup-aftman@v0.4.2
+        with:
+            token: ${{ SECRETS.GITHUB_TOKEN }} 
+               
+      - name: StyLua
+        uses: JohnnyMorganz/stylua-action@v4
+        with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            version: latest
+            args: src

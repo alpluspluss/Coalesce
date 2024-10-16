@@ -1,0 +1,12 @@
+{
+  "name": "Coalesce",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Coalesce": {
+        "$path": "lib"
+      }
+    }
+    }
+}
