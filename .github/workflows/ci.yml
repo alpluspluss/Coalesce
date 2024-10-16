@@ -19,7 +19,7 @@ jobs:
                
       - name: check linting
         run: |
-          selene src
+          selene lib
   style:
     name: styling
     runs-on: ubuntu-latest
@@ -39,4 +39,4 @@ jobs:
         with:
             token: ${{ secrets.GITHUB_TOKEN }}
             version: latest
-            args: src
+            args: lib
